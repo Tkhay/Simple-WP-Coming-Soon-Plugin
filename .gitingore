@@ -1,0 +1,45 @@
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Dependency directories
+/node_modules/
+/vendor/
+
+# Build directories
+/dist/
+/build/
+
+# Compiled assets
+*.min.css
+*.min.js
+*.map
+
+# Environment files
+.env
+.env.*
+
+# Log files
+*.log
+error_log
+debug.log
+
+# Backup files
+*.bak
+*.swp
+*~
+
+# WordPress specific
+wp-config.php
+.htaccess
+
+# Package managers
+composer.lock
+package-lock.json
+yarn.lock
