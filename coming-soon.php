@@ -9,6 +9,19 @@
 if ( !defined('ABSPATH')) {
     exit;
 }
+$logo = get_option('ccs_logo');
+$bg_color = get_option('ccs_bg_color', '#ffffff');
+
+echo '<div class="ccs-wrapper" style="background-color:' . esc_attr($bg_color) . ';">';
+
+if ($logo) {
+    echo '<img src="' . esc_url($logo) . '" alt="Coming Soon Logo" style="max-width:200px;">';
+}
+
+echo '<h1>' . esc_html(get_option('ccs_heading', 'Coming Soon')) . '</h1>';
+echo '<p>' . esc_html(get_option('ccs_message', 'Our website is under construction.')) . '</p>';
+echo '</div>';
+exit;
 
 require_once plugin_dir_path(__FILE__) . 'admin-settings.php';
 
@@ -44,6 +57,21 @@ function ccs_show_coming_soon() {
         echo '</div>';
         exit;
     }
+
+    $logo = get_option('ccs_logo');
+    $bg_color = get_option('ccs_bg_color', '#ffffff');
+
+    echo '<div class="ccs-wrapper" style="background-color:' . esc_attr($bg_color) . ';">';
+
+    if ($logo) {
+        echo '<img src="' . esc_url($logo) . '" alt="Coming Soon Logo" style="max-width:200px;">';
+    }
+
+    echo '<h1>' . esc_html(get_option('ccs_heading', 'Coming Soon')) . '</h1>';
+    echo '<p>' . esc_html(get_option('ccs_message', 'Our website is under construction.')) . '</p>';
+    echo '</div>';
+    exit;
+
 }
 
 
