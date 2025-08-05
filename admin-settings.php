@@ -51,6 +51,13 @@ function ccs_logo_render() {
     <?php
 }
 
+function ccs_bg_color_render() {
+    $bg_color = get_option('ccs_bg_color', '#ffffff');
+    ?>
+    <input type="text" name="ccs_bg_color" value="<?php echo esc_attr($bg_color); ?>" class="ccs-color-field" />
+    <?php
+}
+
 
 function ccs_enabled_render() {
     $enabled = get_option('ccs_enabled', '0');
