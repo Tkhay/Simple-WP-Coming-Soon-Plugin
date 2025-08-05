@@ -93,3 +93,14 @@ function ccs_options_page() {
     <?php
 }
 
+add_action('admin_enqueue_scripts', 'ccs_enqueue_admin_assets');
+
+function ccs_enqueue_admin_assets($hook_suffix) {
+    if ($hook_suffix === 'settings_page_tieku-coming-soon') {
+        wp_enqueue_media();
+        wp_enqueue_style('wp-color-picker');
+        wp_enqueue_script('ccs-admin-script', plugins_url('js/admin.js', __FILE__), ['jquery', 'wp-color-picker'], false, true);
+    }
+}
+
+
