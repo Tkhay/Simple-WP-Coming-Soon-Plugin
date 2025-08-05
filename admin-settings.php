@@ -43,6 +43,15 @@ function ccs_settings_init() {
     add_settings_field('ccs_bg_color', 'Background Color', 'ccs_bg_color_render', 'ccsSettings', 'ccs_section');
 }
 
+function ccs_logo_render() {
+    $logo = get_option('ccs_logo');
+    ?>
+    <input type="text" name="ccs_logo" id="ccs_logo" value="<?php echo esc_url($logo); ?>" style="width:60%;">
+    <input type="button" id="ccs_logo_button" class="button" value="Upload Logo" />
+    <?php
+}
+
+
 function ccs_enabled_render() {
     $enabled = get_option('ccs_enabled', '0');
     ?>
