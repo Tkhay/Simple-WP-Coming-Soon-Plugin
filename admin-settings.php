@@ -33,6 +33,10 @@ function ccs_settings_init() {
     register_setting('ccsSettings', 'ccs_message');
     register_setting('ccsSettings', 'ccs_logo');
     register_setting('ccsSettings', 'ccs_bg_color');
+    register_setting('ccsSettings', 'ccs_facebook_url');
+    register_setting('ccsSettings', 'ccs_instagram_url');
+    register_setting('ccsSettings', 'ccs_tiktok_url');
+
 
 
     add_settings_section('ccs_section', __('Settings', 'wordpress'), null, 'ccsSettings');
@@ -41,6 +45,10 @@ function ccs_settings_init() {
     add_settings_field('ccs_message', __('Message', 'wordpress'), 'ccs_message_render', 'ccsSettings', 'ccs_section');
     add_settings_field('ccs_logo', 'Logo', 'ccs_logo_render', 'ccsSettings', 'ccs_section');
     add_settings_field('ccs_bg_color', 'Background Color', 'ccs_bg_color_render', 'ccsSettings', 'ccs_section');
+    add_settings_field('ccs_facebook_url', 'Facebook URL', 'ccs_facebook_url_render', 'ccsSettings', 'ccs_section');
+    add_settings_field('ccs_instagram_url', 'Instagram URL', 'ccs_instagram_url_render', 'ccsSettings', 'ccs_section');
+    add_settings_field('ccs_tiktok_url', 'TikTok URL', 'ccs_tiktok_url_render', 'ccsSettings', 'ccs_section');
+
 }
 
 function ccs_logo_render() {
@@ -57,7 +65,6 @@ function ccs_bg_color_render() {
     <input type="text" name="ccs_bg_color" value="<?php echo esc_attr($bg_color); ?>" class="ccs-color-field" />
     <?php
 }
-
 
 function ccs_enabled_render() {
     $enabled = get_option('ccs_enabled', '0');
