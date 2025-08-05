@@ -1,7 +1,9 @@
 <?php
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
-//Turn off the plugin roles after deactivating the pligin
+//Turn off the plugin roles after deactivating the plugin
 register_deactivation_hook(__FILE__, 'ccs_remove_custom_capabilities');
 function ccs_remove_custom_capabilities() {
     $roles = ['administrator', 'editor'];
@@ -14,8 +16,6 @@ function ccs_remove_custom_capabilities() {
 }
 
 add_action('admin_menu', 'ccs_add_admin_menu');
-add_action('admin_init', 'ccs_settings_init');
-
 function ccs_add_admin_menu() {
     add_options_page(
         __('Coming Soon Settings', 'tieku-coming-soon'),
@@ -26,16 +26,21 @@ function ccs_add_admin_menu() {
     );
 }
 
+add_action('admin_init', 'ccs_settings_init');
 function ccs_settings_init() {
     register_setting('ccsSettings', 'ccs_enabled');
     register_setting('ccsSettings', 'ccs_heading');
     register_setting('ccsSettings', 'ccs_message');
+    register_setting('ccsSettings', 'ccs_logo');
+    register_setting('ccsSettings', 'ccs_bg_color');
+
 
     add_settings_section('ccs_section', __('Settings', 'wordpress'), null, 'ccsSettings');
-
     add_settings_field('ccs_enabled', __('Enable Coming Soon', 'wordpress'), 'ccs_enabled_render', 'ccsSettings', 'ccs_section');
     add_settings_field('ccs_heading', __('Heading', 'wordpress'), 'ccs_heading_render', 'ccsSettings', 'ccs_section');
     add_settings_field('ccs_message', __('Message', 'wordpress'), 'ccs_message_render', 'ccsSettings', 'ccs_section');
+    add_settings_field('ccs_logo', 'Logo', 'ccs_logo_render', 'ccsSettings', 'ccs_section');
+    add_settings_field('ccs_bg_color', 'Background Color', 'ccs_bg_color_render', 'ccsSettings', 'ccs_section');
 }
 
 function ccs_enabled_render() {
